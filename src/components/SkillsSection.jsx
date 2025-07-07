@@ -2,23 +2,70 @@ import { useState } from "react";
 import { cn } from "../lib/utils";
 
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 90, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 75, category: "frontend" },
-  { name: "Tailwind CSS", level: 75, category: "frontend" },
-  { name: "Next.js", level: 85, category: "frontend" },
+  {
+    name: "HTML/CSS",
+    level: 90,
+    category: "frontend",
+    logo: "/logos/htmlcss.svg",
+  },
+  {
+    name: "JavaScript",
+    level: 90,
+    category: "frontend",
+    logo: "/logos/javascript.svg",
+  },
+  { name: "React", level: 90, category: "frontend", logo: "/logos/react.svg" },
+  {
+    name: "TypeScript",
+    level: 75,
+    category: "frontend",
+    logo: "/logos/typescript.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    level: 75,
+    category: "frontend",
+    logo: "/logos/tailwind.svg",
+  },
+  {
+    name: "Next.js",
+    level: 85,
+    category: "frontend",
+    logo: "/logos/nextjs.svg",
+  },
 
-  // Backend
-  { name: "Node.js", level: 90, category: "backend" },
-  { name: "Express", level: 90, category: "backend" },
-  { name: "MongoDB", level: 90, category: "backend" },
-  { name: "GraphQL", level: 50, category: "backend" },
+  {
+    name: "Node.js",
+    level: 90,
+    category: "backend",
+    logo: "/logos/nodejs.svg",
+  },
+  {
+    name: "Express",
+    level: 90,
+    category: "backend",
+    logo: "/logos/express.svg",
+  },
+  {
+    name: "MongoDB",
+    level: 90,
+    category: "backend",
+    logo: "/logos/mongodb.svg",
+  },
+  {
+    name: "GraphQL",
+    level: 50,
+    category: "backend",
+    logo: "/logos/graphql.svg",
+  },
 
-  // Tools
-  { name: "Git/GitHub", level: 85, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
+  {
+    name: "Git/GitHub",
+    level: 85,
+    category: "tools",
+    logo: "/logos/github.svg",
+  },
+  { name: "VS Code", level: 95, category: "tools", logo: "/logos/vscode.svg" },
 ];
 
 const Categories = ["all", "frontend", "backend", "tools"];
@@ -29,6 +76,7 @@ export const SkillsSection = () => {
   const filteredSkills = skills.filter(
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
+
   return (
     <section id="skills" className="relative py-24 px-4 bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -57,14 +105,28 @@ export const SkillsSection = () => {
           {filteredSkills.map((skill, key) => (
             <div
               key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              className="bg-card p-6 rounded-lg shadow-xs card-hover transition hover:shadow-lg"
             >
-              <div className="text-left mb-4">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-10 h-10 animate-float transition-transform hover:scale-110">
+<img
+  src={skill.logo}
+  alt={skill.name}
+  className={cn(
+    "w-full h-full object-contain hover:scale-110 transition-transform hover:drop-shadow-md",
+    ["Next.js", "Express", "GraphQL", "Git/GitHub"].includes(skill.name) &&
+      "invert brightness-[2.5]"
+  )}
+/>
+
+
+                </div>
                 <h3 className="text-lg font-semibold">{skill.name}</h3>
               </div>
-              <div className="w-full bg-secondary/50 rounded-full overflow-hidden ">
+
+              <div className="w-full bg-secondary/50 rounded-full overflow-hidden">
                 <div
-                  className="bg-primary h-2 rounded-full origing-left animate-[grow_1.5s_ease-out"
+                  className="bg-primary h-2 rounded-full origin-left"
                   style={{ width: `${skill.level}%` }}
                 />
               </div>
