@@ -19,15 +19,7 @@ export const Footer = () => {
 
         {/* Middle - Socials */}
         <div className="flex justify-center gap-5">
-          <a
-            href="mailto:mohanad_u@yahoo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition"
-            aria-label="Email"
-          >
-            <Mail className="w-5 h-5" />
-          </a>
+
           <a
             href="https://www.linkedin.com/in/mohanad-usama-30305130a/"
             className="text-muted-foreground hover:text-primary transition"
